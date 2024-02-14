@@ -100,26 +100,4 @@ class LinkedList:
             raise ValueError("Значение не найдено")
         next = current1.next
         current1.next = next.next
-        
-my_list = LinkedList()
-my_list.append_begin(0)
-my_list.append_begin(1)
-my_list.append_begin(1)
-my_list.append_begin(2)
-my_list.append_begin(3)
-my_list.append_begin(4)
-my_list.append_begin(1)
-my_list.append_begin(5)
-my_list.append_begin(1)
-my_list.append_by_index(6, 1)
-print(len(my_list))
-my_list.remove_first()
-print(len(my_list))
-my_list.remove_last()
-print(len(my_list))
-my_list.remove_at(1)
-print(len(my_list))
-my_list.remove_first_value(3)
-print(len(my_list))
-my_list.remove_last_value(1)
-print(len(my_list))
+
