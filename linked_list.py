@@ -46,6 +46,8 @@ class LinkedList:
    
     def __len__(self):
         current = self.head
+        if current is None:
+            return 0
         n = 1
         while current.next:
             current = current.next
@@ -54,30 +56,49 @@ class LinkedList:
     
     def remove_first(self):
         current = self.head
+        if current is None:
+            raise ValueError('Список пуст')
         self.head = current.next
 
     def remove_last(self):
-        n = 0
-        index = len(self)-1
         current = self.head
-        while n != index-1:
+        if current is None:
+            raise ValueError('Список пуст')
+        if self.head.next is None:
+            self.head = None
+            return
+        current1 = current
+        while current.next is not None:
+            current1 = current
             current = current.next
-            n+=1 
-        current.next = None
+        current1.next = None
     
     def remove_at(self, index):
         current = self.head
+        if current is None:
+            raise ValueError('Список пуст')
         n = 0
+        if index == 0:
+            self.head = None
+            return
         while current.next and n!=index-1:
             current = current.next
             n += 1
         if current.next is None:
-            raise IndexError('Нет элемента с таким индексом')
+            raise ValueError('Нет элемента с таким индексом')
         current1 = current.next
         current.next = current1.next
     
     def remove_first_value(self, value):
         current = self.head
+        if current is None:
+            raise ValueError('Список пуст')
+        if self.head.next is None:
+            if self.head.value == value:
+                self.head = None
+                return
+            else:
+                raise ValueError('Такого значения не существует')
         while current.next:
             current1 = current
             current = current.next
@@ -89,6 +110,14 @@ class LinkedList:
     
     def remove_last_value(self, value):
         current = self.head
+        if current is None:
+            raise ValueError('Список пуст')
+        if self.head.next is None:
+            if self.head.value == value:
+                self.head = None
+                return
+            else:
+                raise ValueError('Такого значения не существует')
         current1 = None
         next = None
         while current.next:
